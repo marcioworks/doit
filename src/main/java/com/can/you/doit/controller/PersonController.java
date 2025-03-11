@@ -1,6 +1,7 @@
 package com.can.you.doit.controller;
 
 import com.can.you.doit.model.PersonEntity;
+import com.can.you.doit.model.dto.PersonDTO;
 import com.can.you.doit.service.PersonService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,8 @@ public class PersonController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonEntity>> getAllPerson() throws IOException {
-        List<PersonEntity> persons =  personService.personList();
-
+    public ResponseEntity<List<PersonDTO>> getAllPerson() throws IOException {
+        List<PersonDTO> persons =  personService.personList();
         return new ResponseEntity<>(persons, HttpStatus.OK);
     }
 }
