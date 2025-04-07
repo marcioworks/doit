@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -27,12 +28,21 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<PersonDTO> personList() throws IOException {
-//        String filePath = "src/main/java/com/can/you/doit/mock/mock-person.json";
-
-//        System.out.println(new String(Files.readAllBytes(Paths.get(filePath))));
-//        List<PersonEntity> persons = objectMapper.readValue(new File(filePath), new TypeReference<List<PersonEntity>>() {});
         List<PersonEntity> personList = personRepository.findAll();
         return modelMapper.mapList(personList,PersonDTO.class);
+    }
+
+    @Override
+    public PersonDTO getPerson(Integer id) throws IOException {
+        Optional<PersonEntity> person = personRepository.findById(id);
+        return  toDTO(person.get());
+    }
+
+    @Override
+    public PersonDTO createPerson(PersonDTO personDTO) {
+      PersonEntity person = modelMapper.map(personDTO, PersonEntity.class);
+       person = personRepository.save(person);
+       return modelMapper.map(person,PersonDTO.class);
     }
 
     private List<PersonDTO> entityListToDTO(List<PersonEntity> personList) {

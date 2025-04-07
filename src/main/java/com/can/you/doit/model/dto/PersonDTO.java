@@ -32,4 +32,5 @@ public class PersonDTO {
     private String smokingStatus;
     private String alcoholConsumption;
     private List<String> familyHistory;
+    private String imageUrl;
 }

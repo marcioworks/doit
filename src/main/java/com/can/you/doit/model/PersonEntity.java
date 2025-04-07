@@ -9,7 +9,7 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "person")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -57,5 +57,7 @@ public class PersonEntity {
     @Convert(converter = StringListConverter.class)
     @Column(name = "family_history")
     private List<String> familyHistory;
+    @Column(name = "image_url")
+    private String imageUrl;
 
 }

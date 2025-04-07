@@ -11,4 +11,7 @@ import java.util.List;
 public interface PersonService {
 
     List<PersonDTO> personList() throws IOException;
+    PersonDTO getPerson(Integer id) throws IOException;
+
+    PersonDTO createPerson(PersonDTO personDTO);
 }
