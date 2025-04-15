@@ -1,6 +1,7 @@
 package com.can.you.doit.controller;
 
 import com.can.you.doit.model.PersonEntity;
+import com.can.you.doit.model.dto.CreatePersonDTO;
 import com.can.you.doit.model.dto.PersonDTO;
 import com.can.you.doit.service.PersonService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -37,7 +38,7 @@ public class PersonController {
 
 
     @PostMapping("/create")
-    public ResponseEntity<PersonDTO> createPerson(@RequestBody PersonDTO personDTO) throws IOException {
+    public ResponseEntity<PersonDTO> createPerson(@RequestBody CreatePersonDTO personDTO) throws IOException {
         PersonDTO person =  personService.createPerson(personDTO);
         return new ResponseEntity<>(person, HttpStatus.OK);
     }

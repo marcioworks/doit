@@ -1,6 +1,7 @@
 package com.can.you.doit.service.serviceImpl;
 
 import com.can.you.doit.model.PersonEntity;
+import com.can.you.doit.model.dto.CreatePersonDTO;
 import com.can.you.doit.model.dto.PersonDTO;
 import com.can.you.doit.repository.PersonRepository;
 import com.can.you.doit.service.PersonService;
@@ -20,7 +21,6 @@ public class PersonServiceImpl implements PersonService {
     private final PersonRepository personRepository;
     private final GenericModelMapper modelMapper;
 
-
     public PersonServiceImpl(PersonRepository personRepository, GenericModelMapper modelMapper, GenericModelMapper modelMapper1) {
         this.personRepository = personRepository;
         this.modelMapper = modelMapper1;
@@ -39,7 +39,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public PersonDTO createPerson(PersonDTO personDTO) {
+    public PersonDTO createPerson(CreatePersonDTO personDTO) {
       PersonEntity person = modelMapper.map(personDTO, PersonEntity.class);
        person = personRepository.save(person);
        return modelMapper.map(person,PersonDTO.class);

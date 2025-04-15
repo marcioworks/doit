@@ -1,6 +1,7 @@
 package com.can.you.doit.service;
 
 import com.can.you.doit.model.PersonEntity;
+import com.can.you.doit.model.dto.CreatePersonDTO;
 import com.can.you.doit.model.dto.PersonDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Service;
@@ -13,5 +14,5 @@ public interface PersonService {
     List<PersonDTO> personList() throws IOException;
     PersonDTO getPerson(Integer id) throws IOException;
 
-    PersonDTO createPerson(PersonDTO personDTO);
+    PersonDTO createPerson(CreatePersonDTO personDTO);
 }
